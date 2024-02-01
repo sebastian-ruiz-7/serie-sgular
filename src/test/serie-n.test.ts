@@ -2,70 +2,103 @@ import { describe , test , expect } from "vitest";
 import { SerieN } from "../serie-n";
 
 describe('tests related with serie-n calculation', () => { 
-    // fibonacci
-    test('should fibonacci of 0 be 0', () => { 
+    test('should throw an error if n is a string' , () => {
+        //only natural numbers are allowed
+        try {
+            //@ts-ignore
+            const serieN = new SerieN("a");
+        } catch (error) {
+            //@ts-ignore
+            expect(error.message).toBe('n should be a natural number.')
+        }
+    })
+
+    test('should throw an error if n is a string' , () => {
+        //only natural numbers are allowed
+        try {
+            //@ts-ignore
+            const serieN = new SerieN("2");
+        } catch (error) {
+            //@ts-ignore
+            expect(error.message).toBe('n should be a natural number.')
+        }
+    })
+
+    test('should throw an error if n is negative' , () => {
+        //only natural numbers are allowed
+        try {
+            //@ts-ignore
+            const serieN = new SerieN(-1);
+        } catch (error) {
+            //@ts-ignore
+            expect(error.message).toBe('n should be a natural number.')
+        }
+    })
+
+    test('should throw an error if n is float' , () => {
+        //only natural numbers are allowed
+        try {
+            //@ts-ignore
+            const serieN = new SerieN(1.4);
+        } catch (error) {
+            //@ts-ignore
+            expect(error.message).toBe('n should be a natural number.')
+        }
+    })
+
+    test('should validate results one by one', () => { 
         const serieN = new SerieN(0);
         expect(serieN.fibonacci).toBe(0);
-    })
-
-    test('should fibonacci of 1 be 1', () => { 
-        const serieN = new SerieN(1);
-        expect(serieN.fibonacci).toBe(1);
-    })
-
-    test('should fibonacci of 2 be 2', () => { 
-        const serieN = new SerieN(2);
-        expect(serieN.fibonacci).toBe(2);
-    })
-
-    test('should fibonacci of 3 be 4', () => { 
-        const serieN = new SerieN(3);
-        expect(serieN.fibonacci).toBe(4);
-    })
-
-    test('should fibonacci of 4 be 7', () => { 
-        const serieN = new SerieN(4);
-        expect(serieN.fibonacci).toBe(7);
-    })
-
-    test('should fibonacci of 10 be 143', () => { 
-        const serieN = new SerieN(10);
-        expect(serieN.fibonacci).toBe(143);
-    })
-
-    // triangular
-    test('should triangular of 0 be 0', () => { 
-        const serieN = new SerieN(0);
         expect(serieN.triangular).toBe(0);
+        expect(serieN.prime).toBe(0);
+        expect(serieN.result).toBe(0);
     })
 
-    test('should triangular of 1 be 1', () => { 
+    test('should validate results one by one', () => { 
         const n=1
         const serieN = new SerieN(n);
+        expect(serieN.fibonacci).toBe(1);
         expect(serieN.triangular).toBe((n*(n+1)/2));
+        expect(serieN.prime).toBe(1);
+        expect(serieN.result).toBe(serieN.fibonacci - (2 * serieN.triangular) + serieN.prime);
     })
 
-    test('should triangular of 2 be 3', () => { 
+    test('should validate results one by one', () => { 
         const n=2
         const serieN = new SerieN(n);
+        expect(serieN.fibonacci).toBe(2);
         expect(serieN.triangular).toBe((n*(n+1)/2));
+        expect(serieN.prime).toBe(2);
+        expect(serieN.result).toBe(serieN.fibonacci - (2 * serieN.triangular) + serieN.prime);
     })
 
-    test('should triangular of 3 be 4', () => { 
+    test('should validate results one by one', () => { 
         const n=3
         const serieN = new SerieN(n);
+        expect(serieN.fibonacci).toBe(4);
         expect(serieN.triangular).toBe((n*(n+1)/2));
+        expect(serieN.prime).toBe(5);
+        expect(serieN.result).toBe(serieN.fibonacci - (2 * serieN.triangular) + serieN.prime);
     })
 
-    test('should triangular of 4 be 7', () => { 
+    test('should validate results one by one', () => { 
         const n=4
         const serieN = new SerieN(n);
+        expect(serieN.fibonacci).toBe(7);
         expect(serieN.triangular).toBe((n*(n+1)/2));
+        expect(serieN.prime).toBe(5);
+        expect(serieN.result).toBe(serieN.fibonacci - (2 * serieN.triangular) + serieN.prime);
     })
 
-    test('should triangular of 10 be 143', () => { 
+    test('should validate results one by one', () => { 
         const n=10
         const serieN = new SerieN(n);
+        expect(serieN.fibonacci).toBe(143);
         expect(serieN.triangular).toBe((n*(n+1)/2));
+        expect(serieN.prime).toBe(17);
+        expect(serieN.result).toBe(serieN.fibonacci - (2 * serieN.triangular) + serieN.prime);
     })
+
+    // prime
+
 })

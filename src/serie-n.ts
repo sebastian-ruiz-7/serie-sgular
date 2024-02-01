@@ -5,6 +5,9 @@ export class SerieN {
     protected _prime: number = 0;
 
     constructor(public n: number) {
+        if (typeof n !== 'number' || n < 0 || !Number.isInteger(n)) {
+            throw new Error("n should be a natural number.");
+        }
         this.n = n;
         this.calculateSerieN();
     }
@@ -12,20 +15,20 @@ export class SerieN {
     private calculateSerieN() {
         this.calculateFibonacci();
         this.calculateTriangular();
-        this.prime = this.calculatePrime();
-        this.result = this.fibonacci - (2 * this.triangular) + this.prime;
+        this.calculatePrime();
+        this.result = this._fibonacci - (2 * this._triangular) + this._prime;
     }
 
     private calculateFibonacci(): void {
         if (this.n===0 || this.n===1) {
-            this.fibonacci = this.n;
+            this._fibonacci = this.n;
         }else{
             const series=[1,1]
-            this.fibonacci = 2;
+            this._fibonacci = 2;
             for (let i=3; i<=this.n ; i++) {
                 const sum=series[i-2]+series[i-3]
                 series.push(sum)
-                this.fibonacci = this._fibonacci + sum;
+                this._fibonacci = this._fibonacci + sum;
             }
         }
     }
@@ -36,13 +39,33 @@ export class SerieN {
             return
         }
         while (i<=this.n) {
-            this.triangular = this._triangular + i
+            this._triangular = this._triangular + i
             i++
         }
     }
 
-    private calculatePrime(): number {
-        return 1
+    private calculatePrime(): void {
+        if (this.n===0 || this.n===1) {
+            this._prime = this.n;
+        }else{
+    
+            for (let i = 2; i <= this.n; i++) {
+                if (this.isPrime(i)) {
+                    this._prime =this._prime + i;
+                }
+            }
+        }
+    }
+
+    private isPrime(number: number): boolean {
+        let condition:boolean = true;
+        for (let i = 2; i < number; i++) {
+            if (number % i === 0) {
+                condition = false;
+                break;
+            }
+        }
+        return condition;
     }
 
     get fibonacci(): number {
