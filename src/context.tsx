@@ -1,4 +1,5 @@
-import { useReducer , createContext, useContext } from 'react';
+import { useReducer , createContext, useContext , useEffect } from 'react';
+import { SerieN } from './serie-n';
 
 interface GlobalContext{
     inputValue: number | undefined;
@@ -50,6 +51,15 @@ export const DataProvider= ({children}: DataProviderProps) => {
         dispatch({type: 'SET_RESULT', payload: value})
     
     }
+
+
+    useEffect(() => {
+        if(state.inputValue!==undefined){
+            const serie=new SerieN(state.inputValue);
+            console.log(serie)
+        }
+    }, [state.inputValue])
+    
 
 
     return (
