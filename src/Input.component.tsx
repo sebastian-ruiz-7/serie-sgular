@@ -1,10 +1,14 @@
-import React from 'react'
+import { inputHook } from "./input.hook"
+import './input.css'
 
 export const InputText = () => {
+    const {error,handleUpdate}=inputHook()    
   return (
-    <div>
+    <div className="input-component">
         <p>Please, enter the nth natural number you would like to calculate</p>
-        <input type="text" name="input" />
+        <input onChange={handleUpdate} type="text" name="input" />
+        {error && <p className="error-input">{error}</p>}
     </div>
   )
 }
+[]
