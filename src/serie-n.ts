@@ -11,7 +11,7 @@ export class SerieN {
 
     private calculateSerieN() {
         this.calculateFibonacci();
-        this.triangular = this.calculateTriangular();
+        this.calculateTriangular();
         this.prime = this.calculatePrime();
         this.result = this.fibonacci - (2 * this.triangular) + this.prime;
     }
@@ -30,8 +30,15 @@ export class SerieN {
         }
     }
 
-    private calculateTriangular(): number {
-        return 1
+    private calculateTriangular(): void {
+        let i=1
+        if (this.n===0) {
+            return
+        }
+        while (i<=this.n) {
+            this.triangular = this._triangular + i
+            i++
+        }
     }
 
     private calculatePrime(): number {
