@@ -56,7 +56,7 @@ export const DataProvider= ({children}: DataProviderProps) => {
     useEffect(() => {
         if(state.inputValue!==undefined){
             const serie=new SerieN(state.inputValue);
-            console.log(serie)
+            setResult(serie.result);
         }
     }, [state.inputValue])
     

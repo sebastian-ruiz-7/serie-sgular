@@ -6,7 +6,7 @@ export const InputText = () => {
   return (
     <div className="input-component">
         <p>Please, enter the nth natural number you would like to calculate</p>
-        <input onChange={handleUpdate} type="text" name="input" />
+        <input placeholder="Type a natural number" onChange={handleUpdate} type="text" name="input" />
         {error && <p className="error-input">{error}</p>}
     </div>
   )

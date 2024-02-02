@@ -15,7 +15,7 @@ export const inputHook = () => {
         }
 
         if(!validateInput(value)){
-            return setError('Only natural numbers are allowed')
+            return setError('Only naturals numbers are allowed')
         }
 
         if (error !== undefined) {

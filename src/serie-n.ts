@@ -80,16 +80,17 @@ export class SerieN {
         return this._prime;
     }
 
-    private set fibonacci(value: number) {
-        this._fibonacci = value;
-    }
+    // private set fibonacci(value: number) {
+    //     this._fibonacci = value;
+    // }
 
-    private set triangular(value: number) {
-        this._triangular = value;
-    }
+    // private set triangular(value: number) {
+    //     this._triangular = value;
+    // }
 
-    private set prime(value: number) {
-        this._prime = value;
-    }
+    // private set prime(value: number) {
+        
+    //     this._prime = value;
+    // }
 
 }

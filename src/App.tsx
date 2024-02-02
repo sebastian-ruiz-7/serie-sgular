@@ -1,6 +1,6 @@
 import './App.css'
-import { InputText } from './input.component'
-import { ShowResult } from './showResult.component'
+import { InputText } from './Input.component'
+import { ShowResult } from './ShowResult.component'
 
 function App() {
 
